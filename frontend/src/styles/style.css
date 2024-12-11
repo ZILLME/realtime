@@ -1,0 +1,27 @@
+.app-container {
+  width: 80%;
+  margin: 0 auto;
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+.editor-container {
+  border: 1px solid #ccc;
+  min-height: 200px;
+  padding: 10px;
+  cursor: text;
+  background: #fff;
+}
+
+.info-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.summary, .sentiment, .history {
+  width: 30%;
+  border: 1px solid #eee;
+  padding: 10px;
+  background: #fafafa;
+}
