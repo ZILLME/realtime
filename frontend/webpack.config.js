@@ -1,28 +1,19 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'public'), // ビルド成果物をpublicフォルダへ
     filename: 'bundle.js'
   },
-  devServer: {
-    static: path.join(__dirname, 'public'),
-    compress: true,
-    port: 3000,
-    historyApiFallback: true,
-    proxy: {
-      '/api': 'http://localhost:5000'
-    }
-  },
+  mode: 'production', // 本番ビルドならproduction
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        }
+        use: 'babel-loader'
       },
       {
         test: /\.css$/i,
@@ -30,6 +21,9 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new Dotenv() // これで.envファイルの内容がprocess.envに注入される
+  ],
   resolve: {
     extensions: ['.js', '.jsx']
   }
